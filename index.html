@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accueil - Formulaire DAC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <img src="logo-dac.png" alt="Logo DAC Var Ouest" style="max-width: 200px; display: block; margin: 0 auto 1rem;" />
+  <div class="container accueil">
+    <h1>🧭 Outil d'orientation - DAC Var Ouest</h1>
+
+    <details>
+      <summary>ℹ️ En savoir plus sur cet outil</summary>
+      <p>
+        Cet outil vous permet d’orienter  vers les structures les plus adaptées aux besoins et situations des personnes.
+        Il se base sur trois grands parcours : <strong>Personne Âgée (PA)</strong>,
+        <strong>Personne en situation de Handicap (PH)</strong>,
+        et un <strong>parcours général</strong> pour toutes les autres situations.
+      </p>
+    </details>
+
+    <p class="intro">Merci de sélectionner un parcours :</p>
+
+    <div class="parcours-buttons">
+      <button onclick="window.location.href='pa.html'">👵 Parcours PA</button>
+      <button onclick="alert('Parcours PH à venir')">♿ Parcours PH</button>
+      <button onclick="alert('Parcours général à venir')">👤 Parcours Général</button>
+    </div>
+  </div>
+</body>
+</html>
