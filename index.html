@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <title>Accueil - Formulaire DAC</title>
   <link rel="stylesheet" href="style.css" />
+
+
 </head>
 <body>
+  
     <img src="logo-dac.png" alt="Logo DAC Var Ouest" style="max-width: 200px; display: block; margin: 0 auto 1rem;" />
   <div class="container accueil">
     <h1>🧭 Outil d'orientation - DAC Var Ouest</h1>
@@ -23,9 +26,12 @@
     <p class="intro">Merci de sélectionner un parcours :</p>
 
     <div class="parcours-buttons">
+      <button onclick="genererTestPDF()">TEST PDF</button>
       <button onclick="window.location.href='pa.html'">👵 Parcours PA</button>
       <button onclick="alert('Parcours PH à venir')">♿ Parcours PH</button>
       <button onclick="alert('Parcours général à venir')">👤 Parcours Général</button>
+      
+
     </div>
   </div>
 </body>
