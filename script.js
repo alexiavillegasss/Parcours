@@ -77,21 +77,49 @@ function afficherQuestion(noeud) {
 
       let structure = "";
       const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
+if (communeData) {
+  // Trouve le CCAS (mais ignore ceux qui ont "n'a pas de CCAS" dans le nom)
+  const ccas = communeData.structures.find(s =>
+    s.type.toUpperCase() === "CCAS" &&
+    s.nom.trim().toLowerCase() !== "la commune n’a pas de ccas" &&
+    s.nom.trim().toLowerCase() !== "la commune n'a pas de ccas" // apostrophe droite OU courbe
+  );
 
-      if (communeData) {
-        const correspondance = communeData.structures.find(s =>
-          s.type === orientation.replace("Rediriger vers un ", "").toUpperCase()
-);
-        if (correspondance) {
-          structure = correspondance.nom;
+  const uts = communeData.structures.find(s => s.type.toUpperCase() === "UTS");
+
+  if (ccas) {
+    structure = `
+      ✅ <strong>${ccas.nom}</strong><br>
+      🏢 ${ccas.adresse || "Adresse non renseignée"}<br>
+      📧 ${ccas.mail || "Mail non renseigné"}<br>
+      ☎️ ${ccas.telephone || "Téléphone non renseigné"}
+    `;
+  } else if (uts) {
+    structure = `
+      ⚠️ <strong>La commune n’a pas de CCAS</strong><br>
+      👉 Orientation vers l’UTS de secteur :<br><br>
+      ✅ <strong>${uts.nom}</strong><br>
+      🏢 ${uts.adresse || "Adresse non renseignée"}<br>
+      📧 ${uts.mail || "Mail non renseigné"}<br>
+      ☎️ ${uts.telephone || "Téléphone non renseigné"}
+    `;
+  } else {
+    structure = "Aucune structure trouvée pour cette commune.";
   }
 }
+
+
+
+if (!structure) {
+  structure = `Redirection vers un service de la commune de ${commune}`;
+}
+
       if (!structure) {
         structure = `Redirection vers le service ${orientation.replace("Rediriger vers un ", "")} de ${commune}`;
 
       }
       const resultDiv = document.createElement("div");
-      resultDiv.innerHTML = `<p>✅ <strong>${structure}</strong></p>`;
+      resultDiv.innerHTML = `<p>/*✅*/ <strong>${structure}</strong></p>`;
       container.appendChild(resultDiv);
       const restart = document.createElement("button");
       restart.textContent = "🏠 Recommencer";
@@ -139,19 +167,48 @@ function afficherResultat(resultat) {
       const orientation = resultat.trim();
       let structure = "";
       const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
-      if (communeData){
-        const correspondance = communeData.structures.find(
-  s => s.type === orientation.replace("Rediriger vers un ", "").toUpperCase()
-);
+if (communeData) {
+  // Trouve le CCAS (mais ignore ceux qui ont "n'a pas de CCAS" dans le nom)
+  const ccas = communeData.structures.find(s =>
+    s.type.toUpperCase() === "CCAS" &&
+    s.nom.trim().toLowerCase() !== "la commune n’a pas de ccas" &&
+    s.nom.trim().toLowerCase() !== "la commune n'a pas de ccas" // apostrophe droite OU courbe
+  );
 
-        if (correspondance) {
-          structure = correspondance.nom;
-        }
-      }
+  const uts = communeData.structures.find(s => s.type.toUpperCase() === "UTS");
+
+  if (ccas) {
+    structure = `
+      ✅ <strong>${ccas.nom}</strong><br>
+      🏢 ${ccas.adresse || "Adresse non renseignée"}<br>
+      📧 ${ccas.mail || "Mail non renseigné"}<br>
+      ☎️ ${ccas.telephone || "Téléphone non renseigné"}
+    `;
+  } else if (uts) {
+    structure = `
+      ⚠️ <strong>La commune n’a pas de CCAS</strong><br>
+      👉 Orientation vers l’UTS de secteur :<br><br>
+      ✅ <strong>${uts.nom}</strong><br>
+      🏢 ${uts.adresse || "Adresse non renseignée"}<br>
+      📧 ${uts.mail || "Mail non renseigné"}<br>
+      ☎️ ${uts.telephone || "Téléphone non renseigné"}
+    `;
+  } else {
+    structure = "Aucune structure trouvée pour cette commune.";
+  }
+}
+
+
+
+
+if (!structure) {
+  structure = `Redirection vers un service de la commune de ${commune}`;
+}
+
       if (!structure) {
         structure = `Redirection vers le service ${orientation.replace("Rediriger vers un ", "")} de ${commune}`;
       }
-      resultDiv.innerHTML = `<p>✅ <strong>${structure}</strong></p>`;
+      resultDiv.innerHTML = `<p> <strong>${structure}</strong></p>`;
     });
   }
   const restart = document.createElement("button");
