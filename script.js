@@ -267,7 +267,8 @@ function genererFichePatient(commune, orientation, structureHtml, reponsesUtilis
   // Nettoyage du HTML de la structure
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = structureHtml;
-  const texteStructure = tempDiv.textContent.replace(/\s{2,}/g, " ").trim();
+  tempDiv.querySelectorAll("details, summary").forEach(el => el.remove());
+  const texteStructure = tempDiv.innerText.replace(/\s{2,}/g, " ").trim();
 
   // Encadrer la section
   y += 10;
@@ -277,6 +278,15 @@ function genererFichePatient(commune, orientation, structureHtml, reponsesUtilis
 
   doc.setFont("Helvetica", "normal");
   const structureLines = doc.splitTextToSize(texteStructure, 180);
+  if (y + structureLines.length * 6 > 270) {
+    doc.addPage();
+    y = 20;
+  }
+
+  doc.setFont("Helvetica", "bold");
+  doc.text("Informations sur la structure :", 10, y);
+  y += 6;
+  doc.setFont("Helvetica", "normal");
 
   const rectHeight = structureLines.length * 6 + 4;
   doc.rect(10, y, 190, rectHeight); // rectangle autour de la section
