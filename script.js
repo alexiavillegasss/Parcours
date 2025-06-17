@@ -1,13 +1,14 @@
 let baseStructure = [];
 let communesAvecCLIC = new Set();
+const reponsesUtilisateur = {};
 
+ 
 fetch("communes_structures.json")
   .then(res => res.json())
   .then(data => {
     baseStructure = data;
     console.log("Base de données chargée avec succès.", baseStructure);
-
-    // Construction dynamique de la liste des communes avec CLIC
+ 
     communesAvecCLIC = new Set(
       baseStructure
         .filter(c => {
@@ -16,7 +17,7 @@ fetch("communes_structures.json")
         })
         .map(c => c.commune)
     );
-
+ 
     history.replaceState(arbrePA, "", "");
     afficherNoeud(arbrePA);
   })
@@ -24,44 +25,64 @@ fetch("communes_structures.json")
     console.error("❌ Erreur lors du chargement du JSON :", err);
     document.getElementById("formulaire").innerHTML = "<p>Erreur de chargement des données.</p>";
   });
-
+ 
 const container = document.getElementById("formulaire");
-
+ 
 function afficherQuestion(noeud) {
   container.innerHTML = "";
   const p = document.createElement("p");
   p.textContent = noeud.question;
   container.appendChild(p);
-
+ 
+  if (noeud.customDisplay === "mandatairesJudiciaires") {
+    noeud.options.forEach(opt => {
+      const detail = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = opt.label;
+      detail.appendChild(summary);
+ 
+      const content = document.createElement("div");
+      content.innerHTML = opt.result;
+      detail.appendChild(content);
+ 
+      container.appendChild(detail);
+    });
+    const restart = document.createElement("button");
+    restart.textContent = "🏠 Recommencer";
+    restart.onclick = retourAccueil;
+    container.appendChild(restart);
+    return;
+  }
+ 
   if (noeud.selectCommuneCLIC || noeud.selectCommuneCCAS) {
     const allCommunes = [...new Set(baseStructure.map(e => e.commune))].sort();
-
+ 
     const select = document.createElement("select");
     select.innerHTML = `
       <option disabled selected>Choisir une commune</option>
       ${allCommunes.map(c => `<option>${c}</option>`).join("")}
     `;
-
+ 
     select.addEventListener("change", () => {
       const commune = select.value;
       let orientation;
-
+ 
       const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
       if (!communeData) return;
-
+ 
       const clic = communeData.structures.find(s => s.type === "CLIC" && s.clic.toLowerCase() !== "pas de clic");
       const ccas = communeData.structures.find(s => s.type === "CCAS" && !s.nom.toLowerCase().includes("n'a pas de ccas") && !s.nom.toLowerCase().includes("n’a pas de ccas"));
       const uts = communeData.structures.find(s => s.type === "UTS");
-
+ 
       let structure = "";
-
+ 
       if (noeud.selectCommuneCLIC && clic) {
         orientation = "Rediriger vers un CLIC";
         structure = `
           ✅ <strong>${clic.clic}</strong><br>
           👉 CLIC identifié pour la commune de <strong>${commune}</strong>
         `;
-
+ 
         if (ccas || uts) {
           structure += `
             <details>
@@ -93,7 +114,7 @@ function afficherQuestion(noeud) {
           📧 ${ccas.mail || "Mail non renseigné"}<br>
           ☎️ ${ccas.telephone || "Téléphone non renseigné"}
         `;
-
+ 
         if (uts) {
           structure += `
             <details>
@@ -120,125 +141,60 @@ function afficherQuestion(noeud) {
         orientation = "Aucune structure trouvée";
         structure = "Aucune structure trouvée pour cette commune.";
       }
-
+ 
       container.innerHTML = `
         <h2>Orientation :</h2>
         <p>${orientation}</p>
         <div><strong>${structure}</strong></div>
       `;
-
+      const ficheBtn = document.createElement("button");
+  ficheBtn.textContent = "📄 Générer ma fiche patient";
+  ficheBtn.addEventListener("click", () => {
+    genererFichePatient(commune, orientation, structure, reponsesUtilisateur);
+  });
+  container.appendChild(ficheBtn);
+ 
       const restart = document.createElement("button");
       restart.textContent = "🏠 Recommencer";
       restart.onclick = retourAccueil;
       container.appendChild(restart);
     });
-
+ 
     container.appendChild(select);
     return;
   }
-
+ 
   noeud.options.forEach(option => {
     const btn = document.createElement("button");
     btn.textContent = option.label;
     btn.onclick = () => {
-      enregistrerReponse(noeud.question, option.label);
+      reponsesUtilisateur[noeud.question] = option.label;
       const next = option.result ? { result: option.result } : option.next || option;
       history.pushState(next, "", "");
       afficherNoeud(next);
     };
     container.appendChild(btn);
   });
-
-
-
 }
-
+ 
 function afficherResultat(resultat) {
   container.innerHTML = `
     <h2>Orientation :</h2>
     <p>${resultat}</p>
   `;
-  if (resultat === "Siège départemental à Draguignan") {
-    const message = document.createElement("p");
-    message.innerHTML = "📬 Courrier à envoyer en précisant le besoin.";
-    container.appendChild(message);
-  } else {
-    const selectHTML = `
-      <p><strong>Merci de sélectionner la commune de résidence :</strong></p>
-      <select id="commune-select">
-        <option disabled selected>Choisir une commune</option>
-        ${genererOptionsCommunes()}
-      </select>
-      <div id="orientation-locale" style="margin-top: 1rem;"></div>
-    `;
-    container.innerHTML += selectHTML;
-    const select = document.getElementById("commune-select");
-    const resultDiv = document.getElementById("orientation-locale");
+const ficheBtn = document.createElement("button");
+ficheBtn.textContent = "📄 génerer ma fiche patient";
+ficheBtn.addEventListener("click", () => {
+  genererFichePatient("Commune inconnue", resultat, "", reponsesUtilisateur);
+});
+container.appendChild(ficheBtn)
 
-    select.addEventListener("change", () => {
-      const commune = select.options[select.selectedIndex].text;
-      const orientation = resultat.trim();
-      let structure = "";
-      const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
-if (communeData) {
-  // Trouve le CCAS (mais ignore ceux qui ont "n'a pas de CCAS" dans le nom)
-  const ccas = communeData.structures.find(s =>
-    s.type.toUpperCase() === "CCAS" &&
-    s.nom.trim().toLowerCase() !== "la commune n’a pas de ccas" &&
-    s.nom.trim().toLowerCase() !== "la commune n'a pas de ccas" // apostrophe droite OU courbe
-  );
-
-  const uts = communeData.structures.find(s => s.type.toUpperCase() === "UTS");
-
-  if (ccas) {
-    structure = `
-      ✅ <strong>${ccas.nom}</strong><br>
-      🏢 ${ccas.adresse || "Adresse non renseignée"}<br>
-      📧 ${ccas.mail || "Mail non renseigné"}<br>
-      ☎️ ${ccas.telephone || "Téléphone non renseigné"}
-    `;
-  } else if (uts) {
-    structure = `
-      ⚠️ <strong>La commune n’a pas de CCAS</strong><br>
-      👉 Orientation vers l’UTS de secteur :<br><br>
-      ✅ <strong>${uts.nom}</strong><br>
-      🏢 ${uts.adresse || "Adresse non renseignée"}<br>
-      📧 ${uts.mail || "Mail non renseigné"}<br>
-      ☎️ ${uts.telephone || "Téléphone non renseigné"}
-    `;
-  } else {
-    structure = "Aucune structure trouvée pour cette commune.";
-  }
-}
-
-
-
-
-if (!structure) {
-  structure = `Redirection vers un service de la commune de ${commune}`;
-}
-
-      if (!structure) {
-        structure = `Redirection vers le service ${orientation.replace("Rediriger vers un ", "")} de ${commune}`;
-      }
-      resultDiv.innerHTML = `<p> <strong>${structure}</strong></p>`;
-
-      const ficheBtn = document.createElement("button");
-      ficheBtn.textContent = "📄 Générer ma fiche patient";
-      ficheBtn.addEventListener("click", () => {
-      genererFichePatient(commune, orientation, structure, reponsesUtilisateur);
-  });
-resultDiv.appendChild(ficheBtn);
-    });
-  }
   const restart = document.createElement("button");
   restart.textContent = "🏠 Recommencer";
   restart.onclick = retourAccueil;
   container.appendChild(restart);
-
-
 }
-
+ 
 function afficherNoeud(noeud) {
   if (noeud.result) {
     afficherResultat(noeud.result);
@@ -246,29 +202,25 @@ function afficherNoeud(noeud) {
     afficherQuestion(noeud);
   }
 }
-
+ 
 function retourAccueil() {
   history.pushState(arbrePA, "", "");
   afficherNoeud(arbrePA);
 }
-
+ 
 window.addEventListener("popstate", (event) => {
   if (event.state) {
     afficherNoeud(event.state);
   }
 });
 
-
 function nettoyerStructureHTML(html) {
   const div = document.createElement("div");
   div.innerHTML = html;
-
   // Supprimer les emojis
   const texteSansEmoji = div.textContent.replace(/[\u{1F300}-\u{1FAFF}\u{1F600}-\u{1F64F}]/gu, '');
-
   return texteSansEmoji.replace(/\s{2,}/g, " ").trim();
 }
-
 
 function genererFichePatient(commune, orientation, structureHtml, reponsesUtilisateur = {}) {
   const { jsPDF } = window.jspdf;
@@ -278,8 +230,6 @@ function genererFichePatient(commune, orientation, structureHtml, reponsesUtilis
   }
 
   const doc = new jsPDF({ format: "a4", unit: "mm" });
-  doc.setFont("times", "normal");
-
   const identifiant = "PA-" + Math.random().toString(36).substring(2, 10).toUpperCase();
 
   // Titre
@@ -306,7 +256,7 @@ function genererFichePatient(commune, orientation, structureHtml, reponsesUtilis
   let y = 68;
   for (const [question, reponse] of Object.entries(reponsesUtilisateur)) {
     const lignes = doc.splitTextToSize(`- ${question} : ${reponse}`, 180);
-    if (y + lignes.length * 6 > 280) {
+    if (y + lignes.length * 6 > 270) {
       doc.addPage();
       y = 20;
     }
@@ -314,38 +264,26 @@ function genererFichePatient(commune, orientation, structureHtml, reponsesUtilis
     y += lignes.length * 6;
   }
 
-  // Section "Structures à contacter"
-  if (y > 250) {
-    doc.addPage();
-    y = 20;
-  }
+  // Nettoyage du HTML de la structure
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = structureHtml;
+  const texteStructure = tempDiv.textContent.replace(/\s{2,}/g, " ").trim();
+
+  // Encadrer la section
+  y += 10;
   doc.setFont("Helvetica", "bold");
-  doc.text("Structures à contacter :", 10, y + 10);
-  y += 18;
+  doc.text("Structure à contacter :", 10, y);
+  y += 5;
+
   doc.setFont("Helvetica", "normal");
+  const structureLines = doc.splitTextToSize(texteStructure, 180);
 
-  // Nettoyage plus robuste
-const tempDiv = document.createElement("div");
-tempDiv.innerHTML = structureHtml;
-const texteStructure = nettoyerStructureHTML(structureHtml || "");
+  const rectHeight = structureLines.length * 6 + 4;
+  doc.rect(10, y, 190, rectHeight); // rectangle autour de la section
+  doc.text(structureLines, 12, y + 6);
 
-
-
-  const lignesStructure = doc.splitTextToSize(texteStructure.trim(), 180);
-if (y + lignesStructure.length * 6 > 280) {
-  doc.addPage();
-  y = 20;
-}
-if (!lignesStructure.length) {
-  doc.text("Aucune structure trouvée.", 10, y);
-} else {
-  doc.text(lignesStructure, 10, y);
-}
-
-doc.text(lignesStructure, 10, y);
-
-
-  // Sauvegarde du PDF
+  // Sauvegarde
   doc.save(`fiche_patient_${identifiant}.pdf`);
 }
+
 
