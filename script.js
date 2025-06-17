@@ -1,5 +1,3 @@
-
-
 let baseStructure = [];
 let communesAvecCLIC = new Set();
 
