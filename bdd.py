@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # === 1. Charger le fichier CSV ===
-fichier_csv = "Liste Communes + CCAS(CCAS ) (3).csv"
+fichier_csv = "Liste Communes + CCAS(CCAS ) (5).csv"
 df = pd.read_csv(fichier_csv)
 
 df.columns = [col.strip().lower().replace(" ", "_") for col in df.columns]
@@ -47,6 +47,10 @@ for _, row in df.iterrows():
 
     saad = row.get("saad", "")
 
+    nom_crt = row.get("crt", "")
+    adresse_crt = row.get("adresse_crt", "")
+    tel_crt = row.get("téléphone_crt", "")
+
     # Initialiser la commune si absente
     if commune not in communes_dict:
         communes_dict[commune] = []
@@ -88,6 +92,15 @@ for _, row in df.iterrows():
         communes_dict[commune].append({
             "type": "SAAD",
             "nom": saad.strip()
+        })
+
+    # Ajouter CRT si renseigné
+    if pd.notna(nom_crt) and nom_crt.strip() != "":
+        communes_dict[commune].append({
+            "type": "CRT",
+            "nom": nom_crt.strip(),
+            "adresse": adresse_crt.strip() if pd.notna(adresse_crt) else "",
+            "telephone": tel_crt.strip() if pd.notna(tel_crt) else ""
         })
 
 # === 4. Transformation en liste pour JSON ===

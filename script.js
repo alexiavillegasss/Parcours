@@ -139,6 +139,9 @@ function afficherQuestion(noeud) {
     console.log("CCAS détecté :", ccas);
       const uts = communeData.structures.find(s => s.type === "UTS");
       console.log("UTS détecté :", uts);
+      const crt = communeData.structures.find(s => s.type === "CRT");
+      console.log("UTS détecté :", uts);
+ 
  
       let structure = "";
  
@@ -204,7 +207,8 @@ function afficherQuestion(noeud) {
           🏢 ${uts.adresse || "Adresse non renseignée"}<br>
           ☎️ ${uts.telephone || "Téléphone non renseigné"}
         `;
-      } else {
+      } 
+      else {
         orientation = "Aucune structure trouvée";
         structure = "Aucune structure trouvée pour cette commune.";
       }
@@ -219,6 +223,9 @@ function afficherQuestion(noeud) {
   ficheBtn.addEventListener("click", () => {
     genererFichePatient(commune, orientation, structure, reponsesUtilisateur);
   });
+
+
+
   container.appendChild(ficheBtn);
  
       const restart = document.createElement("button");
@@ -227,6 +234,52 @@ function afficherQuestion(noeud) {
       container.appendChild(restart);
     });
  
+    container.appendChild(select);
+    return;
+  }
+
+      if (noeud.selectCommuneCRT) {
+    const allCommunes = [...new Set(baseStructure.map(e => e.commune))].sort();
+
+    const select = document.createElement("select");
+    select.innerHTML = `
+      <option disabled selected>Choisir une commune</option>
+      ${allCommunes.map(c => `<option>${c}</option>`).join("")}
+    `;
+
+    select.addEventListener("change", () => {
+      const commune = select.value;
+      const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
+      if (!communeData) return;
+
+      const crt = communeData.structures.find(s => s.type === "CRT");
+
+      let orientation = "Rediriger vers le CRT";
+      let structure = crt ? `
+        ✅ <strong>${crt.nom}</strong><br>
+        🏢 ${crt.adresse || "Adresse non renseignée"}<br>
+        ☎️ ${crt.telephone || "Téléphone non renseigné"}
+      ` : "Aucun CRT trouvé pour cette commune.";
+
+      container.innerHTML = `
+        <h2>Orientation :</h2>
+        <p>${orientation}</p>
+        <div><strong>${structure}</strong></div>
+      `;
+
+      const ficheBtn = document.createElement("button");
+      ficheBtn.textContent = "📄 Générer ma fiche patient";
+      ficheBtn.addEventListener("click", () => {
+        genererFichePatient(commune, orientation, structure, reponsesUtilisateur);
+      });
+      container.appendChild(ficheBtn);
+
+      const restart = document.createElement("button");
+      restart.textContent = "🏠 Recommencer";
+      restart.onclick = retourAccueil;
+      container.appendChild(restart);
+    });
+
     container.appendChild(select);
     return;
   }
