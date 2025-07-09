@@ -1,6 +1,5 @@
 const arbrePA = {
   question: "La personne a-t-elle un mandataire judiciaire ?",
-  //customDisplay: "mandatairesJudiciaires",
   options: [
     {
   label: "Oui",

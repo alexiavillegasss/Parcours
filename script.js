@@ -34,12 +34,7 @@ fetch("communes_structures.json")
 const container = document.getElementById("formulaire");
  
 function afficherQuestion(noeud) {
-  /*container.innerHTML = "";
-  const p = document.createElement("p");
-  p.textContent = noeud.question;
-  container.appendChild(p);*/
- 
-  //if (noeud.customDisplay === "mandatairesJudiciaires") {
+
     container.innerHTML = "";
 
     const questionEl = document.createElement("p");
@@ -108,35 +103,7 @@ function afficherQuestion(noeud) {
     container.appendChild(memo);
     }
   
-    /*noeud.options.forEach(opt => {
-      const detail = document.createElement("details");
-      const summary = document.createElement("summary");
-      summary.textContent = opt.label;
-      detail.appendChild(summary);
- 
-      const content = document.createElement("div");
-      content.innerHTML = opt.result;
-      detail.appendChild(content);
- 
-      container.appendChild(detail);
-    });*/
-
     
-
-
-    /*const restart = document.createElement("button");
-    restart.textContent = "🏠 Recommencer";
-    restart.onclick = retourAccueil;
-    container.appendChild(restart);
-    return;
-  
-
-  container.innerHTML = "";
-
-  const questionEl = document.createElement("p");
-  questionEl.textContent = noeud.question;
-  container.appendChild(questionEl);*/
-
  
   if (noeud.selectCommuneCLIC || noeud.selectCommuneCCAS) {
     const allCommunes = [...new Set(baseStructure.map(e => e.commune))].sort();
