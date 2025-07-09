@@ -34,13 +34,81 @@ fetch("communes_structures.json")
 const container = document.getElementById("formulaire");
  
 function afficherQuestion(noeud) {
-  container.innerHTML = "";
+  /*container.innerHTML = "";
   const p = document.createElement("p");
   p.textContent = noeud.question;
-  container.appendChild(p);
+  container.appendChild(p);*/
  
-  if (noeud.customDisplay === "mandatairesJudiciaires") {
-    noeud.options.forEach(opt => {
+  //if (noeud.customDisplay === "mandatairesJudiciaires") {
+    container.innerHTML = "";
+
+    const questionEl = document.createElement("p");
+    questionEl.textContent = noeud.question;
+    container.appendChild(questionEl);
+
+    if (noeud.question.trim() === "La personne a-t-elle un mandataire judiciaire ?") {
+    const memo = document.createElement("details");
+    memo.innerHTML = `
+      <summary> Mémo – Les mesures de protection juridique</summary>
+      <div>
+        <p><strong>Le juge décide d’une mesure de protection à partir d’un certificat médical circonstancié.</strong></p>
+
+        <p><strong>Les principales mesures :</strong></p>
+        <ul>
+          <li><strong>Sauvegarde de Justice</strong> = contrôle du juge</li>
+          <li><strong>Habilitation familiale</strong> = sans contrôle du juge</li>
+          <li><strong>Curatelle</strong> = contrôle du juge</li>
+          <li><strong>Tutelle</strong> = contrôle du juge</li>
+          <li><strong>Mandat de protection future</strong> = sans contrôle du juge</li>
+        </ul>
+
+        <hr>
+
+        <p><strong>🔹 Sauvegarde de Justice</strong></p>
+        <ul>
+          <li>Mesure temporaire, souple et rapide à mettre en place</li>
+          <li>Valable uniquement pour certains actes précisés par le juge</li>
+          <li>Durée : 1 an, renouvelable 1 fois</li>
+          <li>Évolue souvent vers curatelle/tutelle si besoin</li>
+        </ul>
+
+        <p><strong>🔹 Habilitation familiale</strong></p>
+        <ul>
+          <li>Permet à un proche d’agir pour la personne protégée</li>
+          <li>Pas de contrôle régulier du juge</li>
+          <li>Autorisation initiale nécessaire</li>
+        </ul>
+
+        <p><strong>🔹 Curatelle</strong></p>
+        <ul>
+          <li>La personne a besoin d’être assistée dans ses démarches</li>
+          <li><strong>Curatelle simple</strong> : gestion personnelle sauf achats/emprunts</li>
+          <li><strong>Curatelle renforcée</strong> : le curateur gère et règle les dépenses</li>
+          <li>Durée : 5 ans, renouvelable jusqu’à 20 ans</li>
+        </ul>
+
+        <p><strong>🔹 Tutelle</strong></p>
+        <ul>
+          <li>Quand la sauvegarde ou la curatelle ne suffisent plus</li>
+          <li>Le tuteur représente la personne dans presque tous les actes</li>
+          <li>Certains actes doivent toujours être autorisés par le juge</li>
+          <li>Durée : 5 ans, renouvelable jusqu’à 10-20 ans</li>
+        </ul>
+
+        <p><strong>🔹 Mandat de protection future</strong></p>
+        <ul>
+          <li>Permet d’anticiper la perte d’autonomie</li>
+          <li>La personne choisit qui la représentera</li>
+          <li>Doit être individualisé, nécessaire, proportionné</li>
+          <li>Forme : sous seing privé ou par acte notarié</li>
+          <li>Pas d’intervention du juge tant que tout se passe bien</li>
+        </ul>
+      </div>
+    `;
+    container.appendChild(memo);
+    }
+  
+    /*noeud.options.forEach(opt => {
       const detail = document.createElement("details");
       const summary = document.createElement("summary");
       summary.textContent = opt.label;
@@ -51,73 +119,23 @@ function afficherQuestion(noeud) {
       detail.appendChild(content);
  
       container.appendChild(detail);
-    });
-    const restart = document.createElement("button");
+    });*/
+
+    
+
+
+    /*const restart = document.createElement("button");
     restart.textContent = "🏠 Recommencer";
     restart.onclick = retourAccueil;
     container.appendChild(restart);
     return;
-  }
+  
 
-  const memo = document.createElement("details");
-memo.innerHTML = `
-  <summary> Mémo – Les mesures de protection juridique</summary>
-  <div>
-    <p><strong>Le juge décide d’une mesure de protection à partir d’un certificat médical circonstancié.</strong></p>
+  container.innerHTML = "";
 
-    <p><strong>Les principales mesures :</strong></p>
-    <ul>
-      <li><strong>Sauvegarde de Justice</strong> = contrôle du juge</li>
-      <li><strong>Habilitation familiale</strong> = sans contrôle du juge</li>
-      <li><strong>Curatelle</strong> = contrôle du juge</li>
-      <li><strong>Tutelle</strong> = contrôle du juge</li>
-      <li><strong>Mandat de protection future</strong> = sans contrôle du juge</li>
-    </ul>
-
-    <hr>
-
-    <p><strong>🔹 Sauvegarde de Justice</strong></p>
-    <ul>
-      <li>Mesure temporaire, souple et rapide à mettre en place</li>
-      <li>Valable uniquement pour certains actes précisés par le juge</li>
-      <li>Durée : 1 an, renouvelable 1 fois</li>
-      <li>Évolue souvent vers curatelle/tutelle si besoin</li>
-    </ul>
-
-    <p><strong>🔹 Habilitation familiale</strong></p>
-    <ul>
-      <li>Permet à un proche d’agir pour la personne protégée</li>
-      <li>Pas de contrôle régulier du juge</li>
-      <li>Autorisation initiale nécessaire</li>
-    </ul>
-
-    <p><strong>🔹 Curatelle</strong></p>
-    <ul>
-      <li>La personne a besoin d’être assistée dans ses démarches</li>
-      <li><strong>Curatelle simple</strong> : gestion personnelle sauf achats/emprunts</li>
-      <li><strong>Curatelle renforcée</strong> : le curateur gère et règle les dépenses</li>
-      <li>Durée : 5 ans, renouvelable jusqu’à 20 ans</li>
-    </ul>
-
-    <p><strong>🔹 Tutelle</strong></p>
-    <ul>
-      <li>Quand la sauvegarde ou la curatelle ne suffisent plus</li>
-      <li>Le tuteur représente la personne dans presque tous les actes</li>
-      <li>Certains actes doivent toujours être autorisés par le juge</li>
-      <li>Durée : 5 ans, renouvelable jusqu’à 10-20 ans</li>
-    </ul>
-
-    <p><strong>🔹 Mandat de protection future</strong></p>
-    <ul>
-      <li>Permet d’anticiper la perte d’autonomie</li>
-      <li>La personne choisit qui la représentera</li>
-      <li>Doit être individualisé, nécessaire, proportionné</li>
-      <li>Forme : sous seing privé ou par acte notarié</li>
-      <li>Pas d’intervention du juge tant que tout se passe bien</li>
-    </ul>
-  </div>
-`
-container.appendChild(memo);
+  const questionEl = document.createElement("p");
+  questionEl.textContent = noeud.question;
+  container.appendChild(questionEl);*/
 
  
   if (noeud.selectCommuneCLIC || noeud.selectCommuneCCAS) {
