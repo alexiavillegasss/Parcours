@@ -2,6 +2,15 @@ let baseStructure = [];
 let communesAvecCLIC = new Set();
 const reponsesUtilisateur = {};
 
+function normaliserTexte(str) {
+  return (str || "")
+    .toLowerCase()
+    .normalize("NFD")           // enlève les accents
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+
  
 fetch("communes_structures.json")
   .then(res => res.json())
@@ -121,17 +130,24 @@ function afficherQuestion(noeud) {
       const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
       if (!communeData) return;
  
-      const clic = communeData.structures.find(s => s.type === "CLIC" && s.clic.toLowerCase() !== "pas de clic");
-      const ccas = communeData.structures.find(s => s.type === "CCAS" && !s.nom.toLowerCase().includes("n'a pas de ccas") && !s.nom.toLowerCase().includes("n’a pas de ccas"));
+      const clic = communeData.structures.find(s => s.type === "CLIC" &&
+  !normaliserTexte(s.nom || "").includes("pas de clic"));
+      console.log("CLIC détecté :", clic);
+      const ccas = communeData.structures.find(s => s.type === "CCAS" && typeof s.nom === "string" &&
+    !s.nom.toLowerCase().includes("n'a pas de ccas") &&
+    !s.nom.toLowerCase().includes("n’a pas de ccas"));
+    console.log("CCAS détecté :", ccas);
       const uts = communeData.structures.find(s => s.type === "UTS");
+      console.log("UTS détecté :", uts);
  
       let structure = "";
  
       if (noeud.selectCommuneCLIC && clic) {
         orientation = "Rediriger vers un CLIC";
         structure = `
-          ✅ <strong>${clic.clic}</strong><br>
-          👉 CLIC identifié pour la commune de <strong>${commune}</strong>
+          🏛️ <strong>${clic.nom}</strong><br>
+          🏢 ${clic.adresse || "Adresse non renseignée"}<br>
+          ☎️ ${clic.telephone || "Téléphone non renseigné"}
         `;
  
         if (ccas || uts) {
