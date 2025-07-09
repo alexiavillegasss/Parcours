@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test JSON</title>
+</head>
+<body>
+  <h1>Test de chargement JSON</h1>
+  <pre id="resultat">Chargement...</pre>
+
+  <script>
+    fetch("communes_structures.json")
+      .then(res => {
+        if (!res.ok) throw new Error("Erreur HTTP : " + res.status);
+        return res.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) throw new Error("❌ Le JSON n'est pas un tableau !");
+        document.getElementById("resultat").textContent = "✅ JSON chargé avec " + data.length + " communes.";
+        console.log("✅ Données :", data);
+      })
+      .catch(err => {
+        document.getElementById("resultat").textContent = "❌ Problème : " + err.message;
+        console.error("Erreur lors du fetch :", err);
+      });
+  </script>
+</body>
+</html>

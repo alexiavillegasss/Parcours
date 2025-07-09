@@ -2,8 +2,17 @@ import pandas as pd
 import json
 
 # === 1. Charger le fichier CSV ===
-fichier_csv = "Liste Communes + CCAS(CCAS ) (2).csv"
+fichier_csv = "Liste Communes + CCAS(CCAS ) (3).csv"
 df = pd.read_csv(fichier_csv)
+
+df.columns = [col.strip().lower().replace(" ", "_") for col in df.columns]
+print("🧾 Colonnes actuelles :", df.columns.tolist())
+
+
+
+
+
+
 
 
 
@@ -15,6 +24,8 @@ print("Colonnes détectées :", df.columns.tolist())
 
 # === 3. Construction du dictionnaire par commune ===
 communes_dict = {}
+
+
 
 for _, row in df.iterrows():
     commune = row['commune']
@@ -29,7 +40,11 @@ for _, row in df.iterrows():
     nom_uts = row.get("uts", "")
     adresse_uts = row.get("adresse_uts", "")
     tel_uts = row.get("téléphone_uts", "")
-    clic = row.get("clic", "")
+
+    nom_clic = row.get("clic", "")
+    adresse_clic = row.get("adresse_clic", "")
+    tel_clic = row.get("téléphone_clic", "")
+
     saad = row.get("saad", "")
 
     # Initialiser la commune si absente
@@ -57,11 +72,16 @@ for _, row in df.iterrows():
             "telephone": tel_uts.strip() if pd.notna(tel_uts) else ""
         })
 
-    if pd.notna(saad) and saad.strip() != "":
+# Ajouter CLIC si renseigné
+    if pd.notna(nom_clic) and nom_clic.strip() != "":
         communes_dict[commune].append({
             "type": "CLIC",
-            "clic": clic.strip() if pd.notna(clic) else ""
+            "nom": nom_clic.strip(),
+            "adresse": adresse_clic.strip() if pd.notna(adresse_clic) else "",
+            "telephone": tel_clic.strip() if pd.notna(tel_clic) else ""
         })
+
+    
 
     # Ajouter SAAD si renseigné
     if pd.notna(saad) and saad.strip() != "":

@@ -7,19 +7,24 @@ fetch("communes_structures.json")
   .then(res => res.json())
   .then(data => {
     baseStructure = data;
-    console.log("Base de données chargée avec succès.", baseStructure);
+    console.log("✅ Données JSON chargées :", baseStructure);
  
     communesAvecCLIC = new Set(
       baseStructure
         .filter(c => {
-          const clic = c.structures.find(s => s.type === "CLIC");
-          return clic && clic.clic.toLowerCase() !== "pas de clic";
-        })
+      const clic = c.structures.find(s => s.type === "CLIC");
+      return clic && clic.clic && clic.clic.toLowerCase() !== "pas de clic";
+    })
         .map(c => c.commune)
     );
  
     history.replaceState(arbrePA, "", "");
-    afficherNoeud(arbrePA);
+    try {
+  afficherNoeud(arbrePA);
+} catch (e) {
+  console.error("❌ Erreur lors de l'affichage du noeud :", e);
+  document.getElementById("formulaire").innerHTML = "<p>Erreur dans la structure du formulaire.</p>";
+}
   })
   .catch(err => {
     console.error("❌ Erreur lors du chargement du JSON :", err);

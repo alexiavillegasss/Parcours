@@ -21,7 +21,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -47,7 +49,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -73,7 +77,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -99,7 +105,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -125,7 +133,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -151,7 +161,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -177,7 +189,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -203,7 +217,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -229,7 +245,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -255,7 +273,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -281,7 +301,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -307,7 +329,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -333,7 +357,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -359,7 +385,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -385,7 +413,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -411,7 +441,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -437,7 +469,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -463,7 +497,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -489,7 +525,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -515,7 +553,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -541,7 +581,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -567,7 +609,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -593,7 +637,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -619,7 +665,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -645,7 +693,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -671,7 +721,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -697,7 +749,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -723,7 +777,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -749,7 +805,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -775,7 +833,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -801,7 +861,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -827,7 +889,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -853,7 +917,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -879,7 +945,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -905,7 +973,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -931,7 +1001,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -957,7 +1029,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -983,7 +1057,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -1009,7 +1085,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1035,7 +1113,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1061,7 +1141,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -1087,7 +1169,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1113,7 +1197,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1139,7 +1225,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1165,7 +1253,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1191,7 +1281,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -1217,7 +1309,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1243,7 +1337,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC Provence Verte"
+        "nom": "CLIC Provence Verte",
+        "adresse": "174, Route Départementale 554, 83170 Brignoles",
+        "telephone": "04 98 05 27 10"
       },
       {
         "type": "SAAD",
@@ -1269,7 +1365,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1299,7 +1397,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1325,7 +1425,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1351,7 +1453,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1377,7 +1481,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1403,7 +1509,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1429,7 +1537,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1455,7 +1565,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1481,7 +1593,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1511,7 +1625,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE et CLIC la Vallée du Gapeau"
+        "nom": "CLIC HADAGE et CLIC la Vallée du Gapeau",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1537,7 +1653,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC la Vallée du Gapeau"
+        "nom": "CLIC la Vallée du Gapeau",
+        "adresse": "1193 avenue des Sénès, 83210-Solliès-Pont",
+        "telephone": "04 94 33 10 62"
       },
       {
         "type": "SAAD",
@@ -1563,7 +1681,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC du Coudon"
+        "nom": "CLIC du Coudon",
+        "adresse": "8 rue Jean-Baptiste Lavène - Maisons des Séniors et des Familles, 83130-La Garde",
+        "telephone": "04 22 44 84 73"
       },
       {
         "type": "SAAD",
@@ -1589,7 +1709,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1615,7 +1737,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC du Coudon"
+        "nom": "CLIC du Coudon",
+        "adresse": "8 rue Jean-Baptiste Lavène - Maisons des Séniors et des Familles, 83130-La Garde",
+        "telephone": "04 22 44 84 73"
       },
       {
         "type": "SAAD",
@@ -1641,7 +1765,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1667,7 +1793,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC du Coudon"
+        "nom": "CLIC du Coudon",
+        "adresse": "8 rue Jean-Baptiste Lavène - Maisons des Séniors et des Familles, 83130-La Garde",
+        "telephone": "04 22 44 84 73"
       },
       {
         "type": "SAAD",
@@ -1693,7 +1821,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC du Coudon"
+        "nom": "CLIC du Coudon",
+        "adresse": "8 rue Jean-Baptiste Lavène - Maisons des Séniors et des Familles, 83130-La Garde",
+        "telephone": "04 22 44 84 73"
       },
       {
         "type": "SAAD",
@@ -1719,7 +1849,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC HADAGE"
+        "nom": "CLIC HADAGE",
+        "adresse": "6 boulevard Chateaubriand, 83400-Hyères",
+        "telephone": "04 22 59 04 00"
       },
       {
         "type": "SAAD",
@@ -1745,7 +1877,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1771,7 +1905,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC la Vallée du Gapeau"
+        "nom": "CLIC la Vallée du Gapeau",
+        "adresse": "1193 avenue des Sénès, 83210-Solliès-Pont",
+        "telephone": "04 94 33 10 62"
       },
       {
         "type": "SAAD",
@@ -1797,7 +1933,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC la Vallée du Gapeau"
+        "nom": "CLIC la Vallée du Gapeau",
+        "adresse": "1193 avenue des Sénès, 83210-Solliès-Pont",
+        "telephone": "04 94 33 10 62"
       },
       {
         "type": "SAAD",
@@ -1823,7 +1961,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC la Vallée du Gapeau"
+        "nom": "CLIC la Vallée du Gapeau",
+        "adresse": "1193 avenue des Sénès, 83210-Solliès-Pont",
+        "telephone": "04 94 33 10 62"
       },
       {
         "type": "SAAD",
@@ -1853,7 +1993,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1879,7 +2021,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC la Vallée du Gapeau"
+        "nom": "CLIC la Vallée du Gapeau",
+        "adresse": "1193 avenue des Sénès, 83210-Solliès-Pont",
+        "telephone": "04 94 33 10 62"
       },
       {
         "type": "SAAD",
@@ -1905,7 +2049,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1931,7 +2077,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -1957,7 +2105,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC du Cap Sicié"
+        "nom": "CLIC du Cap Sicié",
+        "adresse": "1 rue Ernest Renan, 83500 La Seyne-sur-Mer",
+        "telephone": "04 94 06 97 04"
       },
       {
         "type": "SAAD",
@@ -1983,7 +2133,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2009,7 +2161,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2035,7 +2189,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2054,7 +2210,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2080,7 +2238,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2106,7 +2266,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2132,7 +2294,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2158,7 +2322,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2184,7 +2350,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "pas de CLIC"
+        "nom": "pas de CLIC",
+        "adresse": "",
+        "telephone": ""
       },
       {
         "type": "SAAD",
@@ -2210,7 +2378,9 @@
       },
       {
         "type": "CLIC",
-        "clic": "CLIC de Toulon"
+        "nom": "CLIC de Toulon",
+        "adresse": "100 rue des Ramparts - BP 813, 83000 Toulon",
+        "telephone": "04 94 24 65 25"
       },
       {
         "type": "SAAD",

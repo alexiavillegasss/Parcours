@@ -69,6 +69,14 @@ const arbrePA = {
       📧 nathalie.monge@ch-pierrefeu.fr</p>
       <p><u>Spécificité</u> : exerce pour les patients hospitaliers et personnes résidant en EHPAD (via conventions avec CH / EHPAD > 80 lits).</p>
     </details>
+
+    <details><summary><strong>Liste des mandataires judiciaires individuels</summary>
+      <p><u>Lien vers l'annuaire des mandataires judiciares exerçant à titre individuels</u><br>
+      📍 <a href="https://chambre-mjpm.fr/annuaire-mandataires" target="_blank" rel="noopener noreferrer"> https://chambre-mjpm.fr/annuaire-mandataires
+      </a>
+      </p>
+      <p><u>Spécificité</u> : Ce lien mène vers la liste de tous les mandataires judiciaires exerçant à titre individuels vous pouvez les trier en fonction de votre commune ou de votre département.</p>
+    </details>
   `
 },
     {
@@ -79,8 +87,44 @@ const arbrePA = {
           label: "Oui",
           question: "Besoin de réévaluation ou plan APA déjà existant ?",
           options: [
-            { label: "Oui", result: "Siège départemental à Draguignan" },
-            { label: "Non", result: "Pôle social de coordination gérontologique" }
+            { label: "Oui", 
+              result: `
+              <h3>Siège départemental à Draguignan</h3>
+              <details>
+              <summary><strong>📍Adresse du siège et informations</strong></summary>
+              <p><u>Structure :</u> Siège départemental de Draguignant</p>
+                <p>
+                  📍 412 rue jean Aicard, 83300 Draguignan<br>
+                  ☎️ 04 98 10 56 00
+                </p>
+                <p><u>Spécificité</u> : Un courrier doit être envoyé en précisant votre besoin. Pour la mise en place de cette réévaluation le délais est d'en moyenne 2 mois.</p>
+              </details> ` },
+            {
+              label: "Non",
+              result: `
+                <h3>Service social APA selon votre secteur :</h3>
+
+                <details>
+                  <summary><strong>📍 Provence Verte, Bassin Hyèrois, Cuers, Pierrefeu ou communes voisines</strong></summary>
+                  <p><u>Structure :</u> Service social de l’APA – Draguignan</p>
+                  <p>
+                    📍 59 Rue du Docteur Barbaroux, 83300 DRAGUIGNAN<br>
+                    ☎️ 04 94 60 31 60
+                  </p>
+                  <p><u>Spécificité</u> : référent APA pour le secteur Provence Verte élargi.</p>
+                </details>
+
+                <details>
+                  <summary><strong>📍 Toulon, Solliès, Vallée du Gapeau ou communes voisines</strong></summary>
+                  <p><u>Structure :</u> Service social APA – Toulon</p>
+                  <p>
+                    📍 5 Rue Picot, 83000 TOULON<br>
+                    ☎️ 04 94 22 81 00
+                  </p>
+                  <p><u>Spécificité</u> : référent APA pour le bassin toulonnais et alentours.</p>
+                </details>
+              `
+            }
           ]
         },
         {
