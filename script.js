@@ -238,51 +238,138 @@ function afficherQuestion(noeud) {
     return;
   }
 
-      if (noeud.selectCommuneCRT) {
-    const allCommunes = [...new Set(baseStructure.map(e => e.commune))].sort();
+if (noeud.selectCommuneCRT) {
+  const allCommunes = [...new Set(baseStructure.map(e => e.commune))].sort();
 
-    const select = document.createElement("select");
-    select.innerHTML = `
-      <option disabled selected>Choisir une commune</option>
-      ${allCommunes.map(c => `<option>${c}</option>`).join("")}
-    `;
+  const select = document.createElement("select");
+  select.innerHTML = `
+    <option disabled selected>Choisir une commune</option>
+    ${allCommunes.map(c => `<option>${c}</option>`).join("")}
+  `;
 
-    select.addEventListener("change", () => {
-      const commune = select.value;
-      const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
-      if (!communeData) return;
+  select.addEventListener("change", () => {
+    const commune = select.value;
+    const communeData = baseStructure.find(entry => entry.commune.toLowerCase() === commune.toLowerCase());
+    if (!communeData) return;
 
-      const crt = communeData.structures.find(s => s.type === "CRT");
+    const crt = communeData.structures.find(s =>
+      s.type === "CRT" &&
+      typeof s.nom === "string" &&
+      !normaliserTexte(s.nom).includes("pas de crt")
+    );
+    const clic = communeData.structures.find(s =>
+      s.type === "CLIC" &&
+      typeof s.nom === "string" &&
+      !normaliserTexte(s.nom).includes("pas de clic")
+    );
+    const ccas = communeData.structures.find(s =>
+      s.type === "CCAS" &&
+      typeof s.nom === "string" &&
+      !normaliserTexte(s.nom).includes("n'a pas de ccas") &&
+      !normaliserTexte(s.nom).includes("n’a pas de ccas")
+    );
+    const uts = communeData.structures.find(s => s.type === "UTS");
 
-      let orientation = "Rediriger vers le CRT";
-      let structure = crt ? `
+    let orientation = "";
+    let structure = "";
+
+    // Ordre de priorité : CRT > CLIC > CCAS > UTS
+    if (crt) {
+      orientation = "Rediriger vers le CRT";
+      structure = `
         ✅ <strong>${crt.nom}</strong><br>
         🏢 ${crt.adresse || "Adresse non renseignée"}<br>
         ☎️ ${crt.telephone || "Téléphone non renseigné"}
-      ` : "Aucun CRT trouvé pour cette commune.";
-
-      container.innerHTML = `
-        <h2>Orientation :</h2>
-        <p>${orientation}</p>
-        <div><strong>${structure}</strong></div>
       `;
+    } else if (clic) {
+      orientation = "Rediriger vers un CLIC";
+      structure = `
+        🏛️ <strong>${clic.nom}</strong><br>
+        🏢 ${clic.adresse || "Adresse non renseignée"}<br>
+        ☎️ ${clic.telephone || "Téléphone non renseigné"}
+      `;
+      if (ccas || uts) {
+        structure += `
+          <details>
+            <summary>ℹ️ Pour information complémentaire</summary>
+            ${ccas ? `
+              <p>
+                🏛️ <strong>${ccas.nom}</strong><br>
+                🏢 ${ccas.adresse || "Adresse non renseignée"}<br>
+                📧 ${ccas.mail || "Mail non renseigné"}<br>
+                ☎️ ${ccas.telephone || "Téléphone non renseigné"}
+              </p>` : ""}
+            ${uts ? `
+              <p>
+                ✅ <strong>${uts.nom}</strong><br>
+                🏢 ${uts.adresse || "Adresse non renseignée"}<br>
+                ☎️ ${uts.telephone || "Téléphone non renseigné"}
+              </p>` : ""}
+          </details>
+        `;
+      }
+    } else if (ccas) {
+      orientation = "Rediriger vers le CCAS";
+      structure = `
+        ✅ <strong>${ccas.nom}</strong><br>
+        🏢 ${ccas.adresse || "Adresse non renseignée"}<br>
+        📧 ${ccas.mail || "Mail non renseigné"}<br>
+        ☎️ ${ccas.telephone || "Téléphone non renseigné"}
+      `;
+      if (uts) {
+        structure += `
+          <details>
+            <summary>ℹ️ Pour information complémentaire</summary>
+            <p>
+              ✅ <strong>${uts.nom}</strong><br>
+              🏢 ${uts.adresse || "Adresse non renseignée"}<br>
+              ☎️ ${uts.telephone || "Téléphone non renseigné"}
+            </p>
+          </details>
+        `;
+      }
+    } else if (uts) {
+      orientation = "Rediriger vers une UTS";
+      structure = `
+        ⚠️ <strong>La commune n’a pas de CCAS, CLIC ou CRT</strong><br>
+        👉 Orientation vers l’UTS de secteur :<br><br>
+        ✅ <strong>${uts.nom}</strong><br>
+        🏢 ${uts.adresse || "Adresse non renseignée"}<br>
+        ☎️ ${uts.telephone || "Téléphone non renseigné"}
+      `;
+    } else {
+      orientation = "Aucune structure trouvée";
+      structure = `
+        ❌ <strong>Aucune structure référencée</strong><br>
+        Cette commune n’a ni CRT, ni CLIC, ni CCAS, ni UTS connu dans la base.
+      `;
+    }
 
-      const ficheBtn = document.createElement("button");
-      ficheBtn.textContent = "📄 Générer ma fiche patient";
-      ficheBtn.addEventListener("click", () => {
-        genererFichePatient(commune, orientation, structure, reponsesUtilisateur);
-      });
-      container.appendChild(ficheBtn);
+    // Affichage
+    container.innerHTML = `
+      <h2>Orientation :</h2>
+      <p>${orientation}</p>
+      <div><strong>${structure}</strong></div>
+    `;
 
-      const restart = document.createElement("button");
-      restart.textContent = "🏠 Recommencer";
-      restart.onclick = retourAccueil;
-      container.appendChild(restart);
+    const ficheBtn = document.createElement("button");
+    ficheBtn.textContent = "📄 Générer ma fiche patient";
+    ficheBtn.addEventListener("click", () => {
+      genererFichePatient(commune, orientation, structure, reponsesUtilisateur);
     });
+    container.appendChild(ficheBtn);
 
-    container.appendChild(select);
-    return;
-  }
+    const restart = document.createElement("button");
+    restart.textContent = "🏠 Recommencer";
+    restart.onclick = retourAccueil;
+    container.appendChild(restart);
+  });
+
+  container.appendChild(select);
+  return;
+}
+
+
  
   noeud.options.forEach(option => {
     const btn = document.createElement("button");
